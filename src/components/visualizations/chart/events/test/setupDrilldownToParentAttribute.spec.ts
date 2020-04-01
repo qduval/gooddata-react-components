@@ -133,6 +133,9 @@ describe("setupDrilldown", () => {
 
 describe("getDDPointsInParentTick", () => {
     it("should return the right drilldown points for bullet chart", () => {
+        const getEmptyClassName = () => "";
+        const getNullTargetClassName = () => "hidden-empty-series";
+
         const ddPointsForBulletChart = [
             [
                 {
@@ -143,6 +146,7 @@ describe("getDDPointsInParentTick", () => {
                     },
                     x: 0,
                     y: 200,
+                    getClassName: getEmptyClassName,
                 },
                 {
                     series: {
@@ -153,6 +157,7 @@ describe("getDDPointsInParentTick", () => {
                     x: 0,
                     y: 0,
                     target: 300,
+                    getClassName: getEmptyClassName,
                 },
                 {
                     series: {
@@ -162,6 +167,7 @@ describe("getDDPointsInParentTick", () => {
                     },
                     x: 0,
                     y: 400,
+                    getClassName: getEmptyClassName,
                 },
             ],
             [
@@ -173,7 +179,8 @@ describe("getDDPointsInParentTick", () => {
                     },
                     x: 0,
                     y: 0,
-                    target: null,
+                    target: 0,
+                    getClassName: getNullTargetClassName,
                 },
             ],
         ];
@@ -197,6 +204,7 @@ describe("getDDPointsInParentTick", () => {
                 },
                 x: 0,
                 y: 200,
+                getClassName: getEmptyClassName,
             },
             {
                 series: {
@@ -207,6 +215,7 @@ describe("getDDPointsInParentTick", () => {
                 x: 0,
                 y: 300,
                 target: 300,
+                getClassName: getEmptyClassName,
             },
             {
                 series: {
@@ -216,6 +225,7 @@ describe("getDDPointsInParentTick", () => {
                 },
                 x: 0,
                 y: 400,
+                getClassName: getEmptyClassName,
             },
             {
                 series: {
@@ -225,7 +235,8 @@ describe("getDDPointsInParentTick", () => {
                 },
                 x: 0,
                 y: null,
-                target: null,
+                target: 0,
+                getClassName: getNullTargetClassName,
             },
         ];
 

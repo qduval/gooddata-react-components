@@ -24,7 +24,8 @@ export function getDDPointsInParentTick(axis: any, tick: IHighchartsParentTick):
     // replace y value by target value for bullet chart target
     ddPoints.forEach(ddPoint => {
         if (get(ddPoint, "series.userOptions.bulletChartMeasureType") === "target") {
-            ddPoint.y = ddPoint.target;
+            const isNullTarget = ddPoint.getClassName().includes("hidden-empty-series");
+            ddPoint.y = isNullTarget ? null : ddPoint.target;
         }
     });
 
